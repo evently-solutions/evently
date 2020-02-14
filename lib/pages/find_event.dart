@@ -9,6 +9,7 @@ class FindEvent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Text('Find Event'),
           Card()
         ],
       ),

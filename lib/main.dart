@@ -1,5 +1,4 @@
-import 'package:evently/pages/find_event.dart';
-import 'package:evently/pages/home.dart';
+import 'package:evently/pages/tabs.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -62,29 +61,7 @@ class _PageState extends State<Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.title,
-          style: Theme.of(context).textTheme.title,
-        ),
-      ),
-      body: FindEvent(),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Theme.of(context).backgroundColor,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home'),),
-          BottomNavigationBarItem(icon: Icon(Icons.search), title: Text('Find Events')),
-          BottomNavigationBarItem(icon: Icon(Icons.people), title: Text('Connections')),
-          BottomNavigationBarItem(icon: Icon(Icons.add), title: Text('Add Event')),
-          BottomNavigationBarItem(icon: Icon(Icons.calendar_today), title: Text('Upcoming')),
-        ],
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white54,
-        showUnselectedLabels: true,
-        currentIndex: widget._selectedIndex,
-        onTap: _onItemTapped,
-      ),
+      body: Tabs(),
     );
   }
 }
