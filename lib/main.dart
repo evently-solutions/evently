@@ -1,3 +1,4 @@
+import 'package:evently/pages/login.dart';
 import 'package:evently/pages/tabs.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
                 color: Colors.white)),
+        buttonColor: Color.fromRGBO(18, 144, 203, 1.0),
       ),
       home: Page(
         title: 'EVENTLY',
@@ -61,6 +63,7 @@ class _PageState extends State<Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+//      body: Login()
       body: Tabs(),
     );
   }

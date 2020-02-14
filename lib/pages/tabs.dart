@@ -59,13 +59,14 @@ class _TabsState extends State<Tabs> {
             title: Text('Add Event'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
+            icon: Icon(Icons.date_range),
             title: Text('Upcoming'),
           ),
         ],
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white54,
-        showUnselectedLabels: true,
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
         currentIndex: _selectedPageIndex,
       ),
     );
