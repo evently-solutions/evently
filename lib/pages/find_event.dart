@@ -12,15 +12,29 @@ class FindEvent extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                onChanged: (value) {},
+              child: Column(
+                children: <Widget>[
+                  TextField(
+                    onChanged: (value) {},
 //              controller: editingController,
-                decoration: InputDecoration(
-                    labelText: "Search",
-                    hintText: "Search",
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(5.0)))),
+                    decoration: InputDecoration(
+                        labelText: "Search",
+                        hintText: "Search",
+                        prefixIcon: Icon(Icons.search),
+                        suffixIcon: Icon(Icons.clear),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(5.0)))),
+                  ),
+                  Container(
+                    alignment: Alignment.topRight,
+                    child: FlatButton(
+                      child: Text('Apply filters'),
+                      onPressed: () {},
+                    ),
+                    height: 20,
+                  )
+                ],
               ),
             ),
             Expanded(
@@ -43,7 +57,8 @@ class FindEvent extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Text('${items[index]}'),
                                       Text('some other text'),

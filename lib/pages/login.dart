@@ -10,6 +10,9 @@ class Login extends StatelessWidget {
           height: 300,
           width: 350,
           child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
             elevation: 20,
             child: Padding(
               padding: const EdgeInsets.all(30.0),
@@ -27,7 +30,7 @@ class Login extends StatelessWidget {
                           hintText: "Email",
                           prefixIcon: Icon(Icons.email),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(5.0)))),
+                              borderRadius: BorderRadius.all(Radius.circular(10.0)))),
                     ),
                   ),
                   Padding(
@@ -40,7 +43,7 @@ class Login extends StatelessWidget {
                           hintText: "Password",
                           prefixIcon: Icon(Icons.lock),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(5.0)))),
+                              borderRadius: BorderRadius.all(Radius.circular(10.0)))),
                     ),
                   ),
                   Container(
@@ -49,6 +52,9 @@ class Login extends StatelessWidget {
                     height: 75,
 //              color: Colors.lightBlue,
                     child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                       onPressed: () {},
                       color: Colors.lightBlue,
                       disabledColor: Colors.lightBlue,
