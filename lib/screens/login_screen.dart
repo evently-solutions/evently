@@ -1,6 +1,10 @@
+import 'package:evently/screens/home_screen.dart';
+import 'package:evently/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class LoginScreen extends StatelessWidget {
+  static const routeName = '/login';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +28,6 @@ class Login extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       onChanged: (value) {},
-//              controller: editingController,
                       decoration: InputDecoration(
                           labelText: "Email",
                           hintText: "Email",
@@ -55,10 +58,12 @@ class Login extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushReplacementNamed(TabsScreen.routeName);
+                      },
                       color: Colors.lightBlue,
                       disabledColor: Colors.lightBlue,
-                      child: Text('Login', style: TextStyle(color: Colors.black54, fontSize: 16),),
+                      child: Text('Login', style: TextStyle(color: Colors.white, fontSize: 16),),
                     ),
                   )
                 ],

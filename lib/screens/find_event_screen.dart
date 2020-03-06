@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class FindEvent extends StatelessWidget {
+class FindEventScreen extends StatelessWidget {
+  static const routeName = '/findEvent';
+
   List<String> items = ['1', '2', '3', '4', '5', '6', '7'];
 
   @override

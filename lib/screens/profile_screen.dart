@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class AddEvent extends StatelessWidget {
+class ProfileScreen extends StatelessWidget {
+  static const routeName = '/profile';
+
   @override
   Widget build(BuildContext context) {
     return Container();

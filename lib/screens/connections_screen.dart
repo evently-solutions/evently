@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Upcoming extends StatelessWidget {
+class ConnectionsScreen extends StatelessWidget {
+  static const routeName = '/connections';
+
   @override
   Widget build(BuildContext context) {
     return Container();

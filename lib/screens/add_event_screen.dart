@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Connections extends StatelessWidget {
+class AddEventScreen extends StatelessWidget {
+  static const routeName = '/addEvent';
+
   @override
   Widget build(BuildContext context) {
     return Container();

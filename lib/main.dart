@@ -1,5 +1,10 @@
-import 'package:evently/pages/login.dart';
-import 'package:evently/pages/tabs.dart';
+import 'package:evently/screens/add_event_screen.dart';
+import 'package:evently/screens/connections_screen.dart';
+import 'package:evently/screens/find_event_screen.dart';
+import 'package:evently/screens/home_screen.dart';
+import 'package:evently/screens/login_screen.dart';
+import 'package:evently/screens/profile_screen.dart';
+import 'package:evently/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -12,6 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Evently',
       theme: ThemeData(
         backgroundColor: Color.fromRGBO(18, 144, 203, 1.0),
+        accentColor: Colors.amber,
         appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(
                 title: TextStyle(
@@ -36,35 +42,15 @@ class MyApp extends StatelessWidget {
                 color: Colors.white)),
         buttonColor: Color.fromRGBO(18, 144, 203, 1.0),
       ),
-      home: Page(
-        title: 'EVENTLY',
-      ),
-    );
-  }
-}
-
-class Page extends StatefulWidget {
-  final String title;
-  int _selectedIndex = 0;
-
-  Page({this.title});
-
-  @override
-  _PageState createState() => _PageState();
-}
-
-class _PageState extends State<Page> {
-  void _onItemTapped(int index) {
-    setState(() {
-      widget._selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-//      body: Login()
-      body: Tabs(),
+      home: LoginScreen(),
+      routes: {
+        TabsScreen.routeName: (ctx) => TabsScreen(),
+        HomeScreen.routeName: (ctx) => HomeScreen(),
+        FindEventScreen.routeName: (ctx) => FindEventScreen(),
+        ConnectionsScreen.routeName: (ctx) => ConnectionsScreen(),
+        AddEventScreen.routeName: (ctx) => AddEventScreen(),
+        ProfileScreen.routeName: (ctx) => ProfileScreen(),
+      },
     );
   }
 }
