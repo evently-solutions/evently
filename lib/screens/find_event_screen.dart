@@ -1,78 +1,56 @@
+import 'package:evently/constants/event_categories.dart';
+import 'package:evently/widgets/category_item.dart';
 import 'package:flutter/material.dart';
 
 class FindEventScreen extends StatelessWidget {
   static const routeName = '/findEvent';
 
-  List<String> items = ['1', '2', '3', '4', '5', '6', '7'];
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5),
+      color: Colors.black,
+      padding: EdgeInsets.all(15),
       child: Container(
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            Container(
               child: Column(
                 children: <Widget>[
-                  TextField(
-                    onChanged: (value) {},
+                  Container(
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.white),
+                    child: TextField(
+                      onChanged: (value) {},
 //              controller: editingController,
-                    decoration: InputDecoration(
+                      decoration: InputDecoration(
                         labelText: "Search",
                         hintText: "Search",
                         prefixIcon: Icon(Icons.search),
-                        suffixIcon: Icon(Icons.clear),
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(5.0)))),
-                  ),
-                  Container(
-                    alignment: Alignment.topRight,
-                    child: FlatButton(
-                      child: Text('Apply filters'),
-                      onPressed: () {},
+                        suffixIcon: Icon(Icons.clear),),
                     ),
-                    height: 20,
-                  )
+                  ),
                 ],
               ),
             ),
+            Container(
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.fromLTRB(0, 25, 0, 10),
+              child: Text(
+                'Browse Categories',
+                style: TextStyle(fontSize: 24, color: Colors.white),
+              ),
+            ),
             Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    padding: const EdgeInsets.all(8.0),
-                    height: 150,
-                    child: Card(
-                      elevation: 8,
-                      child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            child: Row(
-                              children: <Widget>[
-                                Image.network(
-                                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Text('${items[index]}'),
-                                      Text('some other text'),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          )),
-                    ),
-                  );
-                },
+              child: GridView(
+                children: categories
+                    .map((data) =>
+                    CategoryItem(
+                        data.id, data.title, data.imagePath, data.color))
+                    .toList(),
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200,
+                    childAspectRatio: 3 / 2,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20),
               ),
             ),
           ],

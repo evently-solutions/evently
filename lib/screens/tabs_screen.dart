@@ -55,8 +55,8 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_screens[_selectedScreenIndex]['title']),
+        backgroundColor: Theme.of(context).primaryColor,
       ),
-//      drawer: MainDrawer(),
       body: _screens[_selectedScreenIndex]['screen'],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -65,6 +65,8 @@ class _TabsScreenState extends State<TabsScreen> {
         unselectedItemColor: Colors.white,
         selectedItemColor: Theme.of(context).accentColor,
         currentIndex: _selectedScreenIndex,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -76,14 +78,14 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.people),
-            title: Text('Connections'),
+            title: Text('Connect'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
             title: Text('Checkin'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.account_circle),
             title: Text('Profile'),
           ),
         ],
