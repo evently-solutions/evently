@@ -46,7 +46,22 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
   assets:
-    - assets/images/logos/logo.png
+    - assets/logos/logo.png
+    - assets/samples/profile_picture.jpg
+    - assets/images/categories/comedy.jpg
+    - assets/images/categories/community.jpg
+    - assets/images/categories/concert.jpg
+    - assets/images/categories/festival.jpg
+    - assets/images/categories/fitness.jpg
+    - assets/images/categories/food_and_wine.jpg
+    - assets/images/categories/nightlife.jpg
+    - assets/images/categories/sports.jpg
+    - assets/logos/evently.jpg
+    - assets/logos/evently-icon.png
+    - assets/logos/evently-name.png
+    - assets/logos/evently-square-icon.png
+    - assets/logos/evently-e.png
+    - assets/logos/evently-e-dark.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
