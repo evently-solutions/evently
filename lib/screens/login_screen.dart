@@ -1,9 +1,24 @@
-import 'package:evently/screens/home_screen.dart';
+import 'dart:convert';
+import 'dart:async';
+
+import 'package:evently/models/http_exception.dart';
+import 'package:flutter/widgets.dart';
+import 'package:http/http.dart' as http;
 import 'package:evently/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   static const routeName = '/login';
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final auth = {
+    'email': '',
+    'password': ''
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -28,44 +43,57 @@ class LoginScreen extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: TextField(
-                        onChanged: (value) {},
+                      child: TextFormField(
                         decoration: InputDecoration(
                             labelText: "Email",
                             hintText: "Email",
                             prefixIcon: Icon(Icons.email),
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(10.0)))),
+                                borderRadius: BorderRadius.all(Radius.circular(22.0)))),
+                        onChanged: (value) {
+                          setState(() {
+                            auth['email'] = value;
+                          });
+                        },
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: TextField(
-                        onChanged: (value) {},
-//              controller: editingController,
+                      child: TextFormField(
+                        obscureText: true,
                         decoration: InputDecoration(
                             labelText: "Password",
                             hintText: "Password",
                             prefixIcon: Icon(Icons.lock),
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(10.0)))),
+                                borderRadius: BorderRadius.all(Radius.circular(22.0)))),
+                        onChanged: (value) {
+                          setState(() {
+                            auth['password'] = value;
+                          });
+                        },
                       ),
                     ),
                     Container(
                       padding: EdgeInsets.all(8),
                       width: MediaQuery.of(context).size.width,
                       height: 75,
-//              color: Colors.lightBlue,
                       child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                        child: Text(
+                          'Log In',
+                          style: TextStyle(
+                              color:
+                              Theme.of(context).textTheme.button.color),
                         ),
-                        onPressed: () {
-                          Navigator.of(context).pushReplacementNamed(TabsScreen.routeName);
+                        onPressed: () async {
+                          bool authenticated = await login();
+                          if(!authenticated) {
+                            Navigator.pushNamedAndRemoveUntil(context, TabsScreen.routeName, (r) => false);
+                          }
                         },
-                        color: Colors.lightBlue,
-                        disabledColor: Colors.lightBlue,
-                        child: Text('Login', style: TextStyle(color: Colors.white, fontSize: 16),),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(22.0)
+                        ),
                       ),
                     )
                   ],
@@ -74,6 +102,67 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Future<bool> login() async {
+    final url =
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCuP2GMmaPYl9uz9Zt6PAr5564-Nw3_KEI';
+    try {
+      final response = await http.post(
+        url,
+        body: json.encode(
+          {
+            'email': auth['email'],
+            'password': auth['password'],
+            'returnSecureToken': true,
+          },
+        ),
+      );
+      final responseData = json.decode(response.body);
+      print(responseData);
+      bool error = responseData['error'] != null;
+      if (responseData['error'] != null) {
+        throw HttpException(responseData['error']['message']);
+      }
+      print(error);
+      return error;
+    } on HttpException catch (error) {
+      var errorMessage = 'Authentication failed';
+      if (error.toString().contains('EMAIL_EXISTS')) {
+        errorMessage = 'This email address is already in use.';
+      } else if (error.toString().contains('INVALID_EMAIL')) {
+        errorMessage = 'This is not a valid email address';
+      } else if (error.toString().contains('WEAK_PASSWORD')) {
+        errorMessage = 'This password is too weak.';
+      } else if (error.toString().contains('EMAIL_NOT_FOUND')) {
+        errorMessage = 'Could not find a user with that email.';
+      } else if (error.toString().contains('INVALID_PASSWORD')) {
+        errorMessage = 'Invalid password.';
+      }
+      _showErrorDialog(errorMessage);
+    } catch (error) {
+      const errorMessage =
+          'Could not authenticate you. Please try again later.';
+      _showErrorDialog(errorMessage);
+    }
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text('An Error Occurred!'),
+        content: Text(message),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('Okay'),
+            onPressed: () {
+              Navigator.of(ctx).pop();
+            },
+          )
+        ],
       ),
     );
   }

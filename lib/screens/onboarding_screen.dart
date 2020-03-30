@@ -8,10 +8,10 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.black,),
+      appBar: AppBar(backgroundColor: Theme.of(context).primaryColor,),
       body: Container(
         padding: EdgeInsets.all(30),
-        color: Colors.black,
+        color: Colors.white,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -19,7 +19,7 @@ class OnboardingScreen extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(30),
                 child: Image.asset(
-                  'assets/logos/evently-e-dark.png',
+                  'assets/logos/evently-e.png',
                   height: 300,
                 ),
               ),
@@ -28,7 +28,7 @@ class OnboardingScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: Colors.black),
               ),
               Container(
                 child: Column(
@@ -54,30 +54,11 @@ class OnboardingScreen extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(5),
                       width: double.infinity,
-                      child: RaisedButton(
-                        child: Text(
-                          'Continue with Facebook',
-                          style: TextStyle(
-                              color:
-                                  Theme.of(context).textTheme.button.color),
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, LoginScreen.routeName);
-                        },
-                        shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(22.0)
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      width: double.infinity,
                       child: FlatButton(
                         child: Text(
                           'Sign Up',
                           style: TextStyle(
-                              color:
-                                  Theme.of(context).textTheme.button.color),
+                              color: Colors.black),
                         ),
                         onPressed: () {
                           Navigator.pushNamed(
