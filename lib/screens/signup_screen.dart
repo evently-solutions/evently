@@ -28,7 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
-        color: Colors.lightBlue,
+        color: Theme.of(context).primaryColor,
         child: Center(
           child: Container(
             height: 450,
@@ -55,9 +55,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         decoration: InputDecoration(
                             labelText: "Email",
                             hintText: "Email",
+                            labelStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                            ),
                             prefixIcon: Icon(Icons.email),
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(22.0)))),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(22.0)))),
                       ),
                     ),
                     Padding(
@@ -72,9 +76,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         decoration: InputDecoration(
                             labelText: "Password",
                             hintText: "Password",
+                            labelStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                            ),
                             prefixIcon: Icon(Icons.lock),
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(22.0)))),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(22.0)))),
                       ),
                     ),
                     Padding(
@@ -84,12 +92,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           setState(() {
                             credentials['firstName'] = value;
                           });
-                        },                        decoration: InputDecoration(
+                        },
+                        decoration: InputDecoration(
                             labelText: "First Name",
                             hintText: "First Name",
+                            labelStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                            ),
                             prefixIcon: Icon(Icons.person),
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(22.0)))),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(22.0)))),
                       ),
                     ),
                     Padding(
@@ -103,9 +116,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         decoration: InputDecoration(
                             labelText: "Last Name",
                             hintText: "Last Name",
+                            labelStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                            ),
                             prefixIcon: Icon(Icons.person),
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(22.0)))),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(22.0)))),
                       ),
                     ),
                     Container(
@@ -116,15 +133,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: Text(
                           'Sign Up',
                           style: TextStyle(
-                              color:
-                              Theme.of(context).textTheme.button.color),
+                              color: Theme.of(context).textTheme.button.color,
+                              fontFamily: 'Montserrat',
+                              fontSize: 16),
                         ),
                         onPressed: () async {
                           try {
                             signup().then((success) {
                               print(success);
-                              if(success) {
-                                Navigator.pushNamedAndRemoveUntil(context, TabsScreen.routeName, (r) => false);
+                              if (success) {
+                                Navigator.pushNamedAndRemoveUntil(context,
+                                    TabsScreen.routeName, (r) => false);
                               }
                             });
                           } catch (error) {
@@ -132,8 +151,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           }
                         },
                         shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(22.0)
-                        ),
+                            borderRadius: new BorderRadius.circular(22.0)),
                       ),
                     )
                   ],
@@ -165,8 +183,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 //      if (responseData['error'] != null) {
 //        throw HttpException(responseData['error']['message']);
 //      }
-    print(success);
-    return success;
+      print(success);
+      return success;
     } catch (error) {
       throw error;
     }

@@ -20,6 +20,7 @@ class Main extends StatelessWidget {
       title: 'Evently',
       theme: ThemeData(
         backgroundColor: Color.fromRGBO(18, 144, 203, 1.0),
+        primaryColor: Color.fromRGBO(18, 144, 203, 1.0),
         accentColor: Colors.amber,
         appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(

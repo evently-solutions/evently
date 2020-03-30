@@ -8,7 +8,9 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Theme.of(context).primaryColor,),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+      ),
       body: Container(
         padding: EdgeInsets.all(30),
         color: Colors.white,
@@ -26,9 +28,11 @@ class OnboardingScreen extends StatelessWidget {
               Text(
                 'Find your next event.',
                 style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontFamily: 'Montserrat',
+                ),
               ),
               Container(
                 child: Column(
@@ -40,15 +44,15 @@ class OnboardingScreen extends StatelessWidget {
                         child: Text(
                           'Log In',
                           style: TextStyle(
-                              color:
-                                  Theme.of(context).textTheme.button.color),
+                              fontSize: 16,
+                              fontFamily: 'Montserrat',
+                              color: Theme.of(context).textTheme.button.color),
                         ),
                         onPressed: () {
                           Navigator.pushNamed(context, LoginScreen.routeName);
                         },
                         shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(22.0)
-                        ),
+                            borderRadius: new BorderRadius.circular(22.0)),
                       ),
                     ),
                     Container(
@@ -58,11 +62,12 @@ class OnboardingScreen extends StatelessWidget {
                         child: Text(
                           'Sign Up',
                           style: TextStyle(
-                              color: Colors.black),
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontFamily: 'Montserrat'),
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(
-                              context, SignUpScreen.routeName);
+                          Navigator.pushNamed(context, SignUpScreen.routeName);
                         },
                       ),
                     ),

@@ -6,7 +6,7 @@ class ConnectionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Colors.lightBlue;
+    final color = Theme.of(context).primaryColor;
 
     return Container(
       child: Timeline(

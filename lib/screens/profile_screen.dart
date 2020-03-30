@@ -50,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         width: 100.0,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30.0),
-                          color: Color.fromRGBO(18, 144, 203, 1.0),
+                          color: Theme.of(context).primaryColor,
                         ),
                         child: Center(
                             child: Text(

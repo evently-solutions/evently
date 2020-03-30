@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
-        color: Colors.lightBlue,
+        color: Theme.of(context).primaryColor,
         child: Center(
           child: Container(
             height: 300,
@@ -47,6 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: InputDecoration(
                             labelText: "Email",
                             hintText: "Email",
+                            labelStyle: TextStyle(fontFamily: 'Montserrat',),
                             prefixIcon: Icon(Icons.email),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(Radius.circular(22.0)))),
@@ -64,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: InputDecoration(
                             labelText: "Password",
                             hintText: "Password",
+                            labelStyle: TextStyle(fontFamily: 'Montserrat',),
                             prefixIcon: Icon(Icons.lock),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(Radius.circular(22.0)))),
@@ -82,8 +84,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Text(
                           'Log In',
                           style: TextStyle(
-                              color:
-                              Theme.of(context).textTheme.button.color),
+                            fontSize: 16,
+                              color: Theme.of(context).textTheme.button.color,
+                              fontFamily: 'Montserrat',),
                         ),
                         onPressed: () async {
                           bool authenticated = await login();
@@ -153,11 +156,11 @@ class _LoginScreenState extends State<LoginScreen> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text('An Error Occurred!'),
+        title: Text('An Error Occurred!', style: TextStyle(fontFamily: 'Montserrat',),),
         content: Text(message),
         actions: <Widget>[
           FlatButton(
-            child: Text('Okay'),
+            child: Text('Okay', style: TextStyle(fontFamily: 'Montserrat',),),
             onPressed: () {
               Navigator.of(ctx).pop();
             },
