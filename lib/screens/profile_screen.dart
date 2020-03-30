@@ -9,6 +9,12 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final user = {
+    'name': 'Brian Tardif',
+    'location': 'Phoenix, AZ',
+    'bio': 'Hi, I\'m Brian. I love attending sporting events and comedy shows.',
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        'Brian Tardif',
+                        user['name'],
                         style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold,
@@ -65,7 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Padding(
                 padding: const EdgeInsets.only(left: 20.0),
                 child: Text(
-                  'Phoenix, AZ',
+                  user['location'],
                   style: TextStyle(
                       fontFamily: 'Montserrat',
                       color: Colors.grey,
@@ -76,7 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding:
                     const EdgeInsets.only(left: 20.0, top: 20.0, right: 20.0),
                 child: Text(
-                  'Hi, I\'m Brian. I love attending sporting events and comedy shows.',
+                  user['bio'],
                   style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.w300,
