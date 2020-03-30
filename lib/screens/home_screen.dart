@@ -12,7 +12,27 @@ class HomeScreen extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ListView(
         children: <Widget>[
-          Header('New Events For You'),
+          Header('My Connections'),
+          Container(
+            padding: EdgeInsets.only(top: 10),
+            height: 50,
+            width: 50,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 15,
+                itemBuilder: (ctx, i) => Row(
+                  children: <Widget>[
+                    SizedBox(width: 10,),
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/samples/profile_picture.jpg'),
+                      radius: 20,
+                    ),
+                  ],
+                )
+            ),
+          ),
+          Divider(),
+          Header('Recommended For You'),
           EventCard(
             imageUrl:
                 'http://d1marr3m5x4iac.cloudfront.net/images/block250/I0-001/003/840/471-2.jpeg_/marc-anthony-71.jpeg',
@@ -32,25 +52,7 @@ class HomeScreen extends StatelessWidget {
             venueName: 'test',
           ),
           Divider(),
-          Header('My Community'),
-          Container(
-            padding: EdgeInsets.only(top: 10),
-            height: 135,
-            width: 100,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 15,
-              itemBuilder: (ctx, i) => Row(
-                children: <Widget>[
-                  SizedBox(width: 10,),
-                  CircleAvatar(
-                    backgroundImage: AssetImage('assets/samples/profile_picture.jpg'),
-                    radius: 60,
-                  ),
-                ],
-              )
-            ),
-          ),
+
           Divider(),
           Header('Similar to...'),
         ],

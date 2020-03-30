@@ -36,17 +36,18 @@ class _FindEventScreenState extends State<FindEventScreen> {
                         setState(() {
                           keywordSearch = true;
                         });
-                        final result = await EventfulClient.getEventsByKeywords(keywords);
+                        final result =
+                            await EventfulClient.getEventsByKeywords(keywords);
                         setState(() {
                           eventfulSearchResult = result;
                         });
                       },
                       decoration: InputDecoration(
-                        labelText: "Search",
-                        hintText: "Search",
-                        prefixIcon: Icon(Icons.search),
-                        suffixIcon: Icon(Icons.clear)
-                      ),
+                          labelText: "Search",
+                          hintText: "Search",
+                          labelStyle: TextStyle(fontFamily: 'Montserrat'),
+                          prefixIcon: Icon(Icons.search),
+                          suffixIcon: Icon(Icons.clear)),
                     ),
                   ),
                 ],
@@ -84,7 +85,10 @@ class _FindEventScreenState extends State<FindEventScreen> {
                     padding: EdgeInsets.fromLTRB(0, 25, 0, 10),
                     child: Text(
                       'Browse Categories',
-                      style: TextStyle(fontSize: 24, color: Colors.black87),
+                      style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.black87,
+                          fontFamily: 'Montserrat'),
                     ),
                   ),
             keywordSearch

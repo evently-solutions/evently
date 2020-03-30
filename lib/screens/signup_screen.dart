@@ -47,6 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        textCapitalization: TextCapitalization.none,
                         onChanged: (value) {
                           setState(() {
                             credentials['email'] = value;
@@ -67,6 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        textCapitalization: TextCapitalization.none,
                         obscureText: true,
                         onChanged: (value) {
                           setState(() {

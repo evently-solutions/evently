@@ -22,7 +22,7 @@ class OnboardingScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
                 child: Image.asset(
                   'assets/logos/evently-e.png',
-                  height: 300,
+                  height: MediaQuery.of(context).size.height / 3,
                 ),
               ),
               Text(
@@ -40,9 +40,10 @@ class OnboardingScreen extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(5),
                       width: double.infinity,
+                      height: 75,
                       child: RaisedButton(
                         child: Text(
-                          'Log In',
+                          'Login',
                           style: TextStyle(
                               fontSize: 16,
                               fontFamily: 'Montserrat',

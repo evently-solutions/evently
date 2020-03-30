@@ -40,7 +40,8 @@ class CategoryItem extends StatelessWidget {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
-                    color: Colors.white),
+                    color: Colors.white,
+                  fontFamily: 'Montserrat',),
               ),
             ),
           ),

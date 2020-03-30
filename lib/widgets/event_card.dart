@@ -17,7 +17,6 @@ class EventCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width - 25,
       child: GestureDetector(
         onTap: () {
-          print('tapped');
           Navigator.of(context).pushNamed(EventDetailsScreen.routeName,
               arguments: {'id': id, 'title': title});
         },
@@ -41,17 +40,27 @@ class EventCard extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         title,
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Montserrat',
+                        ),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                       ),
                       Text(
                         date,
-                        style: TextStyle(fontSize: 14),
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: 'Montserrat',
+                        ),
                       ),
                       Text(
                         venueName,
-                        style: TextStyle(fontSize: 14),
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: 'Montserrat',
+                        ),
                       ),
                     ],
                   ),

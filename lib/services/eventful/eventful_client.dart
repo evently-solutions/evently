@@ -76,6 +76,7 @@ class EventfulClient {
       final response = await http.get(Uri.encodeFull(url + id));
       final responseData = json.decode(response.body);
       result = _mapDetailResult(responseData);
+
     } catch (error) {
       print(error);
     }
@@ -83,11 +84,11 @@ class EventfulClient {
   }
 
   static EventfulEventDetailResult _mapDetailResult(dynamic json) {
-    EventfulEventDetailResult result = new EventfulEventDetailResult(
-      description: json['description'],
-      imageUrl: json['images']['image']['block250']['url']
+    print(json['description']);
+    return new EventfulEventDetailResult(
+      description: 'TBD',
+        imageUrl: json['images']['image'][0]['block250']['url']
     );
-    return result;
   }
 
 }

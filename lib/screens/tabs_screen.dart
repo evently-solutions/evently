@@ -30,7 +30,7 @@ class _TabsScreenState extends State<TabsScreen> {
       },
       {
         'screen': ConnectionsScreen(),
-        'title': 'Connections',
+        'title': 'My Community',
       },
       {
         'screen': AddEventScreen(),

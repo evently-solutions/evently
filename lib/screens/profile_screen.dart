@@ -21,10 +21,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Padding(
                 padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
                 child: Container(
-                  height: 50.0,
-                  width: 50.0,
+                  height: 100.0,
+                  width: 100.0,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25.0),
+                      borderRadius: BorderRadius.circular(100.0),
                       image: DecorationImage(
                           image:
                               AssetImage('assets/samples/profile_picture.jpg'),
@@ -57,8 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           '+ Follow',
                           style: TextStyle(
                               color: Colors.white,
-                              fontFamily: 'Montserrat',
-                              fontSize: 12.0),
+                              fontFamily: 'Montserrat'),
                         )),
                       )
                     ],
@@ -218,10 +217,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               image: AssetImage(
                                   'assets/images/other/picfive.jpeg'),
                               fit: BoxFit.cover)),
-                    )
+                    ),
                   ],
                 ),
               ),
+              SizedBox(height: 20,)
             ],
           )
         ],

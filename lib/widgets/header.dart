@@ -10,8 +10,9 @@ class Header extends StatelessWidget {
     return Text(
       title,
       style: TextStyle(
-        fontSize: 28,
+        fontSize: 20,
         fontWeight: FontWeight.bold,
+        fontFamily: 'Montserrat',
       ),
     );
   }

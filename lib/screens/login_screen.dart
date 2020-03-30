@@ -44,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        textCapitalization: TextCapitalization.none,
                         decoration: InputDecoration(
                             labelText: "Email",
                             hintText: "Email",
@@ -62,6 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
                         obscureText: true,
+                        textCapitalization: TextCapitalization.none,
                         decoration: InputDecoration(
                             labelText: "Password",
                             hintText: "Password",
@@ -82,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 75,
                       child: RaisedButton(
                         child: Text(
-                          'Log In',
+                          'Login',
                           style: TextStyle(
                             fontSize: 16,
                               color: Theme.of(context).textTheme.button.color,
