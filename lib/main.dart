@@ -1,5 +1,6 @@
 import 'package:evently/screens/add_event_screen.dart';
 import 'package:evently/screens/connections_screen.dart';
+import 'package:evently/screens/event_details_screen.dart';
 import 'package:evently/screens/find_event_screen.dart';
 import 'package:evently/screens/home_screen.dart';
 import 'package:evently/screens/login_screen.dart';
@@ -55,6 +56,7 @@ class Main extends StatelessWidget {
         TabsScreen.routeName: (ctx) => TabsScreen(),
         HomeScreen.routeName: (ctx) => HomeScreen(),
         FindEventScreen.routeName: (ctx) => FindEventScreen(),
+        EventDetailsScreen.routeName: (ctx) => EventDetailsScreen(),
         ConnectionsScreen.routeName: (ctx) => ConnectionsScreen(),
         AddEventScreen.routeName: (ctx) => AddEventScreen(),
         ProfileScreen.routeName: (ctx) => ProfileScreen(),
