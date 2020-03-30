@@ -59,19 +59,41 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                       CircularProgressIndicator(),
                     ],
                   )
-                : ListView.builder(
-                    itemCount: 15,
-                    itemBuilder: (ctx, i) => Row(
+                : Container(
+                    padding: EdgeInsets.all(15),
+                    child: Column(
                       children: <Widget>[
-                        EventCard(
-                          id: eventfulSearchResult.events.eventList[i].id,
-                          title: eventfulSearchResult.events.eventList[i].title,
-                          date: eventfulSearchResult
-                              .events.eventList[i].startTime,
-                          imageUrl:
-                              eventfulSearchResult.events.eventList[i].imageUrl,
-                          venueName: eventfulSearchResult
-                              .events.eventList[i].venueName,
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          child: Center(
+                            child: Text(
+                              eventfulSearchResult.totalItems.toString() +
+                                  ' events found',
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat', fontSize: 16),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: 10,
+                            itemBuilder: (ctx, i) => Row(
+                              children: <Widget>[
+                                EventCard(
+                                  id: eventfulSearchResult
+                                      .events.eventList[i].id,
+                                  title: eventfulSearchResult
+                                      .events.eventList[i].title,
+                                  date: eventfulSearchResult
+                                      .events.eventList[i].startTime,
+                                  imageUrl: eventfulSearchResult
+                                      .events.eventList[i].imageUrl,
+                                  venueName: eventfulSearchResult
+                                      .events.eventList[i].venueName,
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -102,7 +124,8 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                             child: Text(
                               eventfulSearchResult.totalItems.toString() +
                                   ' events found',
-                              style: TextStyle(fontFamily: 'Montserrat', fontSize: 16),
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat', fontSize: 16),
                             ),
                           ),
                         ),
@@ -112,9 +135,10 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                             itemBuilder: (ctx, i) => Row(
                               children: <Widget>[
                                 EventCard(
-                                  id: eventfulSearchResult.events.eventList[i].id,
-                                  title:
-                                      eventfulSearchResult.events.eventList[i].title,
+                                  id: eventfulSearchResult
+                                      .events.eventList[i].id,
+                                  title: eventfulSearchResult
+                                      .events.eventList[i].title,
                                   date: eventfulSearchResult
                                       .events.eventList[i].startTime,
                                   imageUrl: eventfulSearchResult

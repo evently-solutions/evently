@@ -14,7 +14,7 @@ class EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height / 6,
-      width: MediaQuery.of(context).size.width - 30,
+//      width: MediaQuery.of(context).size.width / 2,
       child: GestureDetector(
         onTap: () {
           Navigator.of(context).pushNamed(EventDetailsScreen.routeName,
@@ -28,11 +28,11 @@ class EventCard extends StatelessWidget {
                 padding: EdgeInsets.all(10),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: imageUrl != 'none' ? Image.network(imageUrl) : Image.asset('assets/images/other/image-not-found.png', width: 110,),
+                  child: imageUrl != 'none' && imageUrl.contains('http') ? Image.network(imageUrl, width: 110,) : Image.asset('assets/images/other/image-not-found.png', width: 110,),
                 ),
               ),
               Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.only(top: 8, right: 8, bottom: 8),
                 child: Container(
                   width: MediaQuery.of(context).size.width / 2,
                   child: Column(
@@ -41,7 +41,7 @@ class EventCard extends StatelessWidget {
                       Text(
                         title,
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Montserrat',
                         ),
@@ -51,14 +51,14 @@ class EventCard extends StatelessWidget {
                       Text(
                         date,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 12,
                           fontFamily: 'Montserrat',
                         ),
                       ),
                       Text(
                         venueName,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 12,
                           fontFamily: 'Montserrat',
                         ),
                         overflow: TextOverflow.ellipsis,
