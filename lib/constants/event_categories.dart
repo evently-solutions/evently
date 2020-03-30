@@ -3,42 +3,42 @@ import 'package:flutter/material.dart';
 
 const categories = [
   Category(
-    id: 'c1',
+    id: 'music',
     title: 'Concerts',
     imagePath: 'assets/images/categories/concert.jpg',
   ),
   Category(
-    id: 'c2',
+    id: 'sports',
     title: 'Sports',
     imagePath: 'assets/images/categories/sports.jpg',
   ),
   Category(
-    id: 'c3',
+    id: 'support',
     title: 'Health & Fitness',
     imagePath: 'assets/images/categories/fitness.jpg',
   ),
   Category(
-    id: 'c4',
+    id: 'food',
     title: 'Food & Wine',
     imagePath: 'assets/images/categories/food_and_wine.jpg',
   ),
   Category(
-    id: 'c5',
+    id: 'singles_social',
     title: 'Nightlife',
     imagePath: 'assets/images/categories/nightlife.jpg',
   ),
   Category(
-    id: 'c6',
+    id: 'festivals_parades',
     title: 'Festivals',
     imagePath: 'assets/images/categories/festival.jpg',
   ),
   Category(
-    id: 'c7',
+    id: 'comedy',
     title: 'Comedy',
     imagePath: 'assets/images/categories/comedy.jpg',
   ),
   Category(
-    id: 'c8',
+    id: 'community',
     title: 'Community',
     imagePath: 'assets/images/categories/community.jpg',
   ),

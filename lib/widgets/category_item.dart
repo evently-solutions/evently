@@ -1,3 +1,4 @@
+import 'package:evently/services/eventful/eventful_client.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -8,26 +9,19 @@ class CategoryItem extends StatelessWidget {
 
   CategoryItem(this.id, this.title, this.imagePath, this.color);
 
-  void selectCategory(BuildContext context) {
-//    Navigator.of(context).pushNamed(
-//      CategoryMealsScreen.routeName,
-//      arguments: {
-//        'id': id,
-//        'title': title,
-//      },
-//    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () async {
+        final result = await EventfulClient.getEventsByCategory(id);
+        print(result);
+      },
       child: Stack(
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(10)),
             child: Container(
-              decoration: BoxDecoration(border: Border.all(color: Colors.white, width: 5),),
+//              decoration: BoxDecoration(border: Border.all(color: Colors.white, width: 5),),
               child: Image.asset(
                 imagePath,
                 height: 250,
