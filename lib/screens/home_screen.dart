@@ -1,5 +1,4 @@
 import 'package:evently/widgets/event_card.dart';
-import 'package:evently/widgets/event_card_list.dart';
 import 'package:evently/widgets/header.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -15,9 +14,45 @@ class HomeScreen extends StatelessWidget {
         children: <Widget>[
           Header('New Events For You'),
           EventCard(
-              imageUrl: 'http://d1marr3m5x4iac.cloudfront.net/images/block250/I0-001/003/840/471-2.jpeg_/marc-anthony-71.jpeg',
-              title: 'Marc Anthony',
-              date: DateFormat.yMMMd().format(DateTime.parse('2020-03-22 19:00:00'))),
+            imageUrl:
+                'http://d1marr3m5x4iac.cloudfront.net/images/block250/I0-001/003/840/471-2.jpeg_/marc-anthony-71.jpeg',
+            title: 'Marc Anthony',
+            date: DateFormat.yMMMd()
+                .format(DateTime.parse('2020-03-22 19:00:00')),
+            venueName: 'test',
+          ),
+          Divider(),
+          Header('Recent Searches'),
+          EventCard(
+            imageUrl:
+                'http://d1marr3m5x4iac.cloudfront.net/images/block250/I0-001/003/840/471-2.jpeg_/marc-anthony-71.jpeg',
+            title: 'Marc Anthony',
+            date: DateFormat.yMMMd()
+                .format(DateTime.parse('2020-03-22 19:00:00')),
+            venueName: 'test',
+          ),
+          Divider(),
+          Header('My Community'),
+          Container(
+            padding: EdgeInsets.only(top: 10),
+            height: 135,
+            width: 100,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 15,
+              itemBuilder: (ctx, i) => Row(
+                children: <Widget>[
+                  SizedBox(width: 10,),
+                  CircleAvatar(
+                    backgroundImage: AssetImage('assets/samples/profile_picture.jpg'),
+                    radius: 60,
+                  ),
+                ],
+              )
+            ),
+          ),
+          Divider(),
+          Header('Similar to...'),
         ],
       ),
     );
