@@ -1,3 +1,4 @@
+import 'package:evently/screens/search_results_screen.dart';
 import 'package:evently/services/eventful/eventful_client.dart';
 import 'package:flutter/material.dart';
 
@@ -14,9 +15,9 @@ class CategoryItem extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 4,
       width: MediaQuery.of(context).size.width / 2,
       child: GestureDetector(
-        onTap: () async {
-          final result = await EventfulClient.getEventsByCategory(id);
-          print(result);
+        onTap: () {
+          Navigator.of(context).pushNamed(SearchResultsScreen.routeName,
+              arguments: {'searchType': 'category', 'id': id, 'title': title});
         },
         child: Stack(
           children: <Widget>[

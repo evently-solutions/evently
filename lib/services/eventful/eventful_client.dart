@@ -24,10 +24,10 @@ class EventfulClient {
 
   static Future<EventfulSearchResult> getEventsByCategory(category) async {
     String url = 'http://api.eventful.com/json/events/search?app_key=tjDKNcBkFvMpqh3G&location=Phoenix&date=Future&sort_order=popularity&image_sizes=block250&category=';
-    print(url + category);
+    print(url + category.toString());
     EventfulSearchResult result;
     try {
-      final response = await http.get(Uri.encodeFull(url + category));
+      final response = await http.get(Uri.encodeFull(url + category.toString()));
       final responseData = json.decode(response.body);
       result = _mapResult(responseData);
     } catch (error) {
@@ -43,7 +43,7 @@ class EventfulClient {
         id: event['id'],
         url: event['url'],
         title: event['title'],
-        imageUrl: event['image'] != null ? event['image']['block250']['url']: '',
+        imageUrl: event['image'] != null ? event['image']['block250']['url']: 'none',
         startTime: event['start_time'],
         venueName: event['venue_name'],
         venueAddress: event['venue_address'],

@@ -45,7 +45,7 @@ class OnboardingScreen extends StatelessWidget {
                         child: Text(
                           'Login',
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 18,
                               fontFamily: 'Montserrat',
                               color: Theme.of(context).textTheme.button.color),
                         ),
@@ -63,7 +63,7 @@ class OnboardingScreen extends StatelessWidget {
                         child: Text(
                           'Sign Up',
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 18,
                               color: Colors.black,
                               fontFamily: 'Montserrat'),
                         ),

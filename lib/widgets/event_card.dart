@@ -14,7 +14,7 @@ class EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height / 6,
-      width: MediaQuery.of(context).size.width - 25,
+      width: MediaQuery.of(context).size.width - 30,
       child: GestureDetector(
         onTap: () {
           Navigator.of(context).pushNamed(EventDetailsScreen.routeName,
@@ -28,7 +28,7 @@ class EventCard extends StatelessWidget {
                 padding: EdgeInsets.all(10),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.network(imageUrl),
+                  child: imageUrl != 'none' ? Image.network(imageUrl) : Image.asset('assets/images/other/image-not-found.png', width: 110,),
                 ),
               ),
               Container(
@@ -61,6 +61,8 @@ class EventCard extends StatelessWidget {
                           fontSize: 14,
                           fontFamily: 'Montserrat',
                         ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                       ),
                     ],
                   ),

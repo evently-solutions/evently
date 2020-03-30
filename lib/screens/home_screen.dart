@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.all(8.0),
       child: ListView(
         children: <Widget>[
@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
             venueName: 'test',
           ),
           Divider(),
-          Header('Recent Searches'),
+          Header('Recent Events'),
           EventCard(
             imageUrl:
                 'http://d1marr3m5x4iac.cloudfront.net/images/block250/I0-001/003/840/471-2.jpeg_/marc-anthony-71.jpeg',

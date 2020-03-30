@@ -1,5 +1,6 @@
 import 'package:evently/constants/event_categories.dart';
 import 'package:evently/models/eventful_search_result.dart';
+import 'package:evently/screens/search_results_screen.dart';
 import 'package:evently/services/eventful/eventful_client.dart';
 import 'package:evently/widgets/category_item.dart';
 import 'package:evently/widgets/event_card.dart';
@@ -19,6 +20,8 @@ class _FindEventScreenState extends State<FindEventScreen> {
   Color firstColor = Color(0xFFF47D25);
   Color secondColor = Color(0xFFEF772C);
 
+  String keywords;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -27,7 +30,7 @@ class _FindEventScreenState extends State<FindEventScreen> {
           searchPart(),
           Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.fromLTRB(0, 25, 0, 10),
+            padding: EdgeInsets.fromLTRB(10, 30, 10, 10),
             child: Text(
               'Browse Categories',
               style: TextStyle(
@@ -60,10 +63,7 @@ class _FindEventScreenState extends State<FindEventScreen> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 30.0,
-                ),
-                SizedBox(
-                  height: 30.0,
+                  height: 50.0,
                 ),
                 Text(
                   'What would you like to do?',
@@ -85,7 +85,11 @@ class _FindEventScreenState extends State<FindEventScreen> {
                       Radius.circular(30.0),
                     ),
                     child: TextField(
-                      onChanged: (text) {},
+                      onChanged: (text) {
+                        setState(() {
+                          keywords = text;
+                        });
+                      },
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 16.0,
@@ -93,6 +97,7 @@ class _FindEventScreenState extends State<FindEventScreen> {
                       ),
 //                      cursorColor: appTheme.primaryColor,
                       decoration: InputDecoration(
+                        hintText: 'Enter keywords here...',
                         contentPadding: EdgeInsets.symmetric(
                             horizontal: 32.0, vertical: 14.0),
                         suffixIcon: Material(
@@ -101,7 +106,10 @@ class _FindEventScreenState extends State<FindEventScreen> {
                             Radius.circular(30.0),
                           ),
                           child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).pushNamed(SearchResultsScreen.routeName,
+                                  arguments: {'searchType': 'keyword', 'keywords': keywords});
+                            },
                             child: Icon(
                               Icons.search,
                               color: Colors.black,
@@ -114,7 +122,7 @@ class _FindEventScreenState extends State<FindEventScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 50.0,
+                  height: 30.0,
                 ),
               ],
             ),
@@ -126,6 +134,7 @@ class _FindEventScreenState extends State<FindEventScreen> {
 
   Widget browsePart() {
     return Container(
+      padding: EdgeInsets.all(10),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -137,7 +146,6 @@ class _FindEventScreenState extends State<FindEventScreen> {
 
   static List<Widget> buildCategoryWidgets() {
     List<Widget> categoryWidgetList = [];
-    print(categories);
     categories.forEach((item) => {
           categoryWidgetList
               .addAll([CategoryItem(item.id, item.title, item.imagePath), SizedBox(width: 10,)])

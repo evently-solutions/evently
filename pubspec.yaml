@@ -57,6 +57,7 @@ flutter:
     - assets/images/other/picfour.jpeg
     - assets/images/other/picfive.jpeg
     - assets/images/other/picsix.jpeg
+    - assets/images/other/image-not-found.png
 
   fonts:
     - family: Montserrat
