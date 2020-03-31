@@ -1,5 +1,7 @@
 import 'package:evently/screens/event_details_screen.dart';
+import 'package:evently/utilities/date_formatter.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class EventCard extends StatelessWidget {
   final String id;
@@ -7,6 +9,8 @@ class EventCard extends StatelessWidget {
   final String title;
   final String date;
   final String venueName;
+
+  DateFormatter dateFormatter = new DateFormatter();
 
   EventCard({this.id, this.imageUrl, this.title, this.date, this.venueName});
 
@@ -25,6 +29,7 @@ class EventCard extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Container(
+                alignment: Alignment.centerRight,
                 padding: EdgeInsets.all(10),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
@@ -32,7 +37,7 @@ class EventCard extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.only(top: 8, right: 8, bottom: 8),
+                padding: const EdgeInsets.all(8),
                 child: Container(
                   width: MediaQuery.of(context).size.width / 2,
                   child: Column(
@@ -51,7 +56,7 @@ class EventCard extends StatelessWidget {
                       Text(
                         date,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 14,
                           fontFamily: 'Montserrat',
                         ),
                       ),

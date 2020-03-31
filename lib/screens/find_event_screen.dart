@@ -144,7 +144,7 @@ class _FindEventScreenState extends State<FindEventScreen> {
     );
   }
 
-  static List<Widget> buildCategoryWidgets() {
+  List<Widget> buildCategoryWidgets() {
     List<Widget> categoryWidgetList = [];
     categories.forEach((item) => {
           categoryWidgetList

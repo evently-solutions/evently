@@ -8,7 +8,7 @@ import 'package:evently/models/eventful_search_result.dart';
 import 'package:http/http.dart' as http;
 
 class EventfulClient {
-  static Future<EventfulSearchResult> getEventsByKeywords(keywords) async {
+  Future<EventfulSearchResult> getEventsByKeywords(keywords) async {
     String url = 'http://api.eventful.com/json/events/search?app_key=tjDKNcBkFvMpqh3G&date=Future&sort_order=popularity&image_sizes=block250&location=Phoenix&keywords=';
     print(url + keywords);
     EventfulSearchResult result;
@@ -22,7 +22,7 @@ class EventfulClient {
     return result;
   }
 
-  static Future<EventfulSearchResult> getEventsByCategory(category) async {
+  Future<EventfulSearchResult> getEventsByCategory(category) async {
     String url = 'http://api.eventful.com/json/events/search?app_key=tjDKNcBkFvMpqh3G&location=Phoenix&date=Future&sort_order=popularity&image_sizes=block250&category=';
     print(url + category.toString());
     EventfulSearchResult result;
@@ -36,7 +36,7 @@ class EventfulClient {
     return result;
   }
 
-  static EventfulSearchResult _mapResult(dynamic json) {
+  EventfulSearchResult _mapResult(dynamic json) {
     List<Event> eventList = [];
     for (var event in json['events']['event']) {
       eventList.add(new Event(
@@ -69,7 +69,7 @@ class EventfulClient {
     return result;
   }
 
-  static Future<EventfulEventDetailResult> getEventDetails(id) async {
+  Future<EventfulEventDetailResult> getEventDetails(id) async {
     String url = 'http://api.eventful.com/json/events/get?app_key=tjDKNcBkFvMpqh3G&image_sizes=block250&id=';
     EventfulEventDetailResult result;
     try {
@@ -83,11 +83,12 @@ class EventfulClient {
     return result;
   }
 
-  static EventfulEventDetailResult _mapDetailResult(dynamic json) {
+  EventfulEventDetailResult _mapDetailResult(dynamic json) {
     print(json['description']);
-    return new EventfulEventDetailResult(
-      description: 'TBD',
-        imageUrl: json['images']['image'][0]['block250']['url']
+    return EventfulEventDetailResult(
+        description: 'TBD',
+        imageUrl: json['images']['image'][0]['block250']['url'],
+        title: json['title']
     );
   }
 

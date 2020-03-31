@@ -13,6 +13,7 @@ class SearchResultsScreen extends StatefulWidget {
 
 class _SearchResultsScreenState extends State<SearchResultsScreen> {
   var _initialized = false;
+  EventfulClient eventfulClient = EventfulClient();
   EventfulSearchResult eventfulSearchResult;
 
   @override
@@ -20,7 +21,6 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
     final parameters =
         ModalRoute.of(context).settings.arguments as Map<String, String>;
 
-    print('fetching data from search');
     if (!_initialized) {
       if (parameters['searchType'] == 'keyword') {
         print('searching by keyword ' + parameters['keywords'].toString());
@@ -158,7 +158,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
   }
 
   void getEventsByKeywords(id) async {
-    final result = await EventfulClient.getEventsByKeywords(id);
+    final result = await eventfulClient.getEventsByKeywords(id);
     setState(() {
       eventfulSearchResult = result;
       print(eventfulSearchResult);
@@ -166,7 +166,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
   }
 
   void getEventsByCategory(category) async {
-    final result = await EventfulClient.getEventsByCategory(category);
+    final result = await eventfulClient.getEventsByCategory(category);
     setState(() {
       eventfulSearchResult = result;
       print(eventfulSearchResult);
