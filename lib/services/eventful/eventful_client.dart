@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:evently/models/eventful_event_detail_result.dart';
-import 'package:provider/provider.dart';
 
 import 'package:evently/models/eventful_search_result.dart';
 import 'package:http/http.dart' as http;
