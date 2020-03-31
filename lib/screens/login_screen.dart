@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:evently/models/http_exception.dart';
+import 'package:evently/services/user/user_service.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:evently/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = '/login';
@@ -19,6 +21,28 @@ class _LoginScreenState extends State<LoginScreen> {
     'email': '',
     'password': ''
   };
+
+  String _token;
+  DateTime _expiryDate;
+  String _userId;
+  Timer _authTimer;
+
+  bool get isAuth {
+    return token != null;
+  }
+
+  String get token {
+    if (_expiryDate != null &&
+        _expiryDate.isAfter(DateTime.now()) &&
+        _token != null) {
+      return _token;
+    }
+    return null;
+  }
+
+  String get userId {
+    return _userId;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         onPressed: () async {
                           bool authenticated = await login();
-                          if(!authenticated) {
+                          if(authenticated) {
                             Navigator.pushNamedAndRemoveUntil(context, TabsScreen.routeName, (r) => false);
                           }
                         },
@@ -126,13 +150,30 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       );
       final responseData = json.decode(response.body);
-      bool error = responseData['error'] != null;
-      print(responseData);
+      bool isAuth = responseData['error'] == null;
+//      print(responseData);
       if (responseData['error'] != null) {
         throw HttpException(responseData['error']['message']);
       }
-      print(error);
-      return error;
+      _token = responseData['idToken'];
+      _userId = responseData['localId'];
+      _expiryDate = DateTime.now().add(
+        Duration(
+          seconds: int.parse(
+            responseData['expiresIn'],
+          ),
+        ),
+      );
+      final userData = json.encode(
+        {
+          'token': _token,
+          'userId': _userId,
+          'expiryDate': _expiryDate.toIso8601String(),
+        },
+      );
+      UserService.setUserData(userData);
+
+      return isAuth;
     } on HttpException catch (error) {
       var errorMessage = 'Authentication failed';
       if (error.toString().contains('EMAIL_EXISTS')) {
