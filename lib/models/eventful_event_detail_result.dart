@@ -5,12 +5,12 @@ class EventfulEventDetailResult {
   String description;
   String date;
   String url;
-  String startTime;
   String venueName;
   String venueAddress;
-  String cityName;
-  String state;
+  String venueCity;
+  String venueRegion;
   String venueUrl;
+  String vividSeatsUrl;
 
   EventfulEventDetailResult({
     this.id,
@@ -19,11 +19,11 @@ class EventfulEventDetailResult {
     this.description,
     this.date,
     this.url,
-    this.startTime,
     this.venueName,
     this.venueAddress,
-    this.cityName,
-    this.state,
+    this.venueCity,
+    this.venueRegion,
     this.venueUrl,
+    this.vividSeatsUrl
   });
 }

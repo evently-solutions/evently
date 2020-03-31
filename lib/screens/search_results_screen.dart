@@ -23,10 +23,8 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
 
     if (!_initialized) {
       if (parameters['searchType'] == 'keyword') {
-        print('searching by keyword ' + parameters['keywords'].toString());
         getEventsByKeywords(parameters['keywords']);
       } else if (parameters['searchType'] == 'category') {
-        print('searching by category ' + parameters['id'].toString());
         getEventsByCategory(parameters['id']);
       }
       setState(() {
@@ -161,7 +159,6 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
     final result = await eventfulClient.getEventsByKeywords(id);
     setState(() {
       eventfulSearchResult = result;
-      print(eventfulSearchResult);
     });
   }
 
@@ -169,7 +166,6 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
     final result = await eventfulClient.getEventsByCategory(category);
     setState(() {
       eventfulSearchResult = result;
-      print(eventfulSearchResult);
     });
   }
 }

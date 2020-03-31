@@ -6,12 +6,7 @@ class DateFormatter {
     String day = int.parse(date.substring(8, 10)).toString();
     String ampm;
     String hour = date.substring(11, 13);
-    print(year);
-    print(month);
-    print(day);
-    print(hour);
     int hourParsed = int.parse(hour);
-    print(hourParsed);
     if (hourParsed < 12 && hourParsed != 0) {
       hour = hourParsed.toString();
       ampm = 'AM';
@@ -26,7 +21,6 @@ class DateFormatter {
       ampm = 'AM';
     }
     String minute = date.substring(14, 16);
-    print('$month $day $year, $hour:$minute $ampm');
     return '$month $day $year, $hour:$minute $ampm';
   }
 

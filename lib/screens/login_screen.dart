@@ -126,8 +126,8 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       );
       final responseData = json.decode(response.body);
-      print(responseData);
       bool error = responseData['error'] != null;
+      print(responseData);
       if (responseData['error'] != null) {
         throw HttpException(responseData['error']['message']);
       }

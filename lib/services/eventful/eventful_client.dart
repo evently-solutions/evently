@@ -10,7 +10,6 @@ import 'package:http/http.dart' as http;
 class EventfulClient {
   Future<EventfulSearchResult> getEventsByKeywords(keywords) async {
     String url = 'http://api.eventful.com/json/events/search?app_key=tjDKNcBkFvMpqh3G&date=Future&sort_order=popularity&image_sizes=block250&location=Phoenix&keywords=';
-    print(url + keywords);
     EventfulSearchResult result;
     try {
       final response = await http.get(Uri.encodeFull(url + keywords));
@@ -24,7 +23,6 @@ class EventfulClient {
 
   Future<EventfulSearchResult> getEventsByCategory(category) async {
     String url = 'http://api.eventful.com/json/events/search?app_key=tjDKNcBkFvMpqh3G&location=Phoenix&date=Future&sort_order=popularity&image_sizes=block250&category=';
-    print(url + category.toString());
     EventfulSearchResult result;
     try {
       final response = await http.get(Uri.encodeFull(url + category.toString()));
@@ -40,17 +38,18 @@ class EventfulClient {
     List<Event> eventList = [];
     for (var event in json['events']['event']) {
       eventList.add(new Event(
-        id: event['id'],
-        url: event['url'],
-        title: event['title'],
-        imageUrl: event['image'] != null ? event['image']['block250']['url']: 'none',
-        startTime: event['start_time'],
-        venueName: event['venue_name'],
-        venueAddress: event['venue_address'],
-        cityName: event['city_name'],
-        state: event['region_name'],
-        venueUrl: event['venue_url']
-      ));
+          id: event['id'],
+          url: event['url'],
+          title: event['title'],
+          imageUrl: event['image'] != null
+              ? event['image']['block250']['url']
+              : 'none',
+          startTime: event['start_time'],
+          venueName: event['venue_name'],
+          venueAddress: event['venue_address'],
+          cityName: event['city_name'],
+          state: event['region_name'],
+          venueUrl: event['venue_url']));
     }
 
     Events events = new Events(eventList: eventList);
@@ -62,10 +61,6 @@ class EventfulClient {
         pageCount: int.parse(json['page_count']),
         events: events);
 
-    for(Event event in result.events.eventList) {
-      print(event.title);
-    }
-
     return result;
   }
 
@@ -76,7 +71,6 @@ class EventfulClient {
       final response = await http.get(Uri.encodeFull(url + id));
       final responseData = json.decode(response.body);
       result = _mapDetailResult(responseData);
-
     } catch (error) {
       print(error);
     }
@@ -84,12 +78,19 @@ class EventfulClient {
   }
 
   EventfulEventDetailResult _mapDetailResult(dynamic json) {
-    print(json['description']);
     return EventfulEventDetailResult(
-        description: 'TBD',
+        id: json['id'],
         imageUrl: json['images']['image'][0]['block250']['url'],
-        title: json['title']
-    );
+        title: json['title'] != null ? json['title'] : '',
+        description: json['description'] != null ? json['description'] : 'No description provided.',
+        date: json['start_time'] != null ? json['start_time'] : '',
+        venueName: json['venue_name'] != null ? json['venue_name'] : '',
+        venueAddress: json['address'] != null ? json['address'] : '',
+        venueCity: json['city'] != null ? json['city'] : '',
+        venueRegion: json['region'] != null ? json['region'] : '',
+        venueUrl: json['url'] != null ? json['url'] : '',
+        vividSeatsUrl: json['links'] != null ? json['links']['link'][0]['url'] : ''
+        );
   }
 
 }
