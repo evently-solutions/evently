@@ -18,7 +18,7 @@ class EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height / 6,
-//      width: MediaQuery.of(context).size.width / 2,
+      width: MediaQuery.of(context).size.width - 30,
       child: GestureDetector(
         onTap: () {
           Navigator.of(context).pushNamed(EventDetailsScreen.routeName,
@@ -37,7 +37,7 @@ class EventCard extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.only(top: 10, left: 10, bottom: 10),
                 child: Container(
                   width: MediaQuery.of(context).size.width / 2,
                   child: Column(

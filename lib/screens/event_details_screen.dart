@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:evently/models/eventful_event_detail_result.dart';
 import 'package:evently/services/eventful/eventful_client.dart';
-import 'package:evently/utilities/UniqueColorGenerator.dart';
+import 'package:evently/utilities/unique_color_generator.dart';
 import 'package:evently/utilities/date_formatter.dart';
 import 'package:evently/widgets/header.dart';
 import 'package:flutter/material.dart';

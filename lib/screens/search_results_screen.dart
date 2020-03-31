@@ -60,6 +60,8 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                 : Container(
                     padding: EdgeInsets.all(15),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -74,7 +76,8 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                         ),
                         Expanded(
                           child: ListView.builder(
-                            itemCount: 10,
+                            itemCount: eventfulSearchResult
+                                .events.eventList.length,
                             itemBuilder: (ctx, i) => Row(
                               children: <Widget>[
                                 EventCard(
@@ -115,6 +118,8 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                 : Container(
                     padding: EdgeInsets.all(15),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -129,7 +134,8 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                         ),
                         Expanded(
                           child: ListView.builder(
-                            itemCount: 10,
+                            itemCount: eventfulSearchResult
+                                .events.eventList.length,
                             itemBuilder: (ctx, i) => Row(
                               children: <Widget>[
                                 EventCard(
