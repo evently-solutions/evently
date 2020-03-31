@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 class EventfulClient {
   Future<EventfulSearchResult> getEventsByKeywords(keywords) async {
-    String url = 'http://api.eventful.com/json/events/search?app_key=tjDKNcBkFvMpqh3G&date=Future&sort_order=popularity&image_sizes=block250&location=Phoenix&keywords=';
+    String url = 'http://api.eventful.com/json/events/search?app_key=tjDKNcBkFvMpqh3G&date=Future&sort_order=popularity&page_size=50&image_sizes=block250&location=Phoenix&keywords=';
     EventfulSearchResult result;
     try {
       final response = await http.get(Uri.encodeFull(url + keywords));
@@ -21,7 +21,7 @@ class EventfulClient {
   }
 
   Future<EventfulSearchResult> getEventsByCategory(category) async {
-    String url = 'http://api.eventful.com/json/events/search?app_key=tjDKNcBkFvMpqh3G&location=Phoenix&date=Future&sort_order=popularity&image_sizes=block250&category=';
+    String url = 'http://api.eventful.com/json/events/search?app_key=tjDKNcBkFvMpqh3G&location=Phoenix&date=Future&sort_order=popularity&page_size=50&image_sizes=block250&category=';
     EventfulSearchResult result;
     try {
       final response = await http.get(Uri.encodeFull(url + category.toString()));
