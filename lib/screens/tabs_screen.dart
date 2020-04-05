@@ -22,7 +22,7 @@ class _TabsScreenState extends State<TabsScreen> {
     _screens = [
       {
         'screen': HomeScreen(),
-        'title': 'Home',
+        'title': '',
       },
       {
         'screen': FindEventScreen(),

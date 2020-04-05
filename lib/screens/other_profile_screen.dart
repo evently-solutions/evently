@@ -1,15 +1,13 @@
-import 'package:evently/screens/login_screen.dart';
-import 'package:evently/screens/user_settings_screen.dart';
 import 'package:flutter/material.dart';
 
-class ProfileScreen extends StatefulWidget {
-  static const routeName = '/profile';
+class OtherProfileScreen extends StatefulWidget {
+  static const routeName = '/otherProfile';
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  _OtherProfileScreenState createState() => _OtherProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _OtherProfileScreenState extends State<OtherProfileScreen> {
   final user = {
     'name': 'Brian Tardif',
     'location': 'Phoenix, AZ',
@@ -19,6 +17,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(user['name'].split(' ')[0] + '\'s Page', style: TextStyle(fontFamily: 'Montserrat'),),
+        backgroundColor: Theme.of(context).primaryColor,
+      ),
       backgroundColor: Colors.white,
       body: ListView(
         children: <Widget>[
@@ -27,35 +29,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      height: 100.0,
-                      width: 100.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100.0),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/samples/profile_picture.jpg'),
-                              fit: BoxFit.cover)),
-                    ),
-                    GestureDetector(
-                      child: Icon(
-                        Icons.settings,
-                        color: Colors.grey,
-                      ),
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushNamed(UserSettingsScreen.routeName);
-                      },
-                    ),
-                  ],
+                child: Container(
+                  height: 100.0,
+                  width: 100.0,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100.0),
+                      image: DecorationImage(
+                          image:
+                          AssetImage('assets/samples/profile_picture.jpg'),
+                          fit: BoxFit.cover)),
                 ),
               ),
               Padding(
                   padding:
-                      const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
+                  const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -66,6 +53,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             fontWeight: FontWeight.bold,
                             fontSize: 17.0),
                       ),
+                      Container(
+                        alignment: Alignment.centerRight,
+                        height: 40.0,
+                        width: 100.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30.0),
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        child: Center(
+                            child: Text(
+                              '+ Follow',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'Montserrat'),
+                            )),
+                      )
                     ],
                   )),
               Padding(
@@ -80,7 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(left: 20.0, top: 20.0, right: 20.0),
+                const EdgeInsets.only(left: 20.0, top: 20.0, right: 20.0),
                 child: Text(
                   user['bio'],
                   style: TextStyle(
@@ -168,7 +171,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           borderRadius: BorderRadius.circular(10.0),
                           image: DecorationImage(
                               image:
-                                  AssetImage('assets/images/other/picone.jpeg'),
+                              AssetImage('assets/images/other/picone.jpeg'),
                               fit: BoxFit.cover)),
                     ),
                     SizedBox(width: 10.0),
@@ -179,7 +182,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           borderRadius: BorderRadius.circular(10.0),
                           image: DecorationImage(
                               image:
-                                  AssetImage('assets/images/other/pictwo.jpeg'),
+                              AssetImage('assets/images/other/pictwo.jpeg'),
                               fit: BoxFit.cover)),
                     )
                   ],
@@ -227,9 +230,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 20,
-              )
+              SizedBox(height: 20,)
             ],
           )
         ],

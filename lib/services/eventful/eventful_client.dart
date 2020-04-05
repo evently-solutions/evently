@@ -1,12 +1,15 @@
 import 'dart:convert';
 import 'dart:async';
 
+import 'package:evently/dao/firebase/firebase_dao.dart';
 import 'package:evently/models/eventful_event_detail_result.dart';
 
 import 'package:evently/models/eventful_search_result.dart';
 import 'package:http/http.dart' as http;
 
 class EventfulClient {
+  FirebaseDAO dao = FirebaseDAO();
+
   Future<EventfulSearchResult> getEventsByKeywords(keywords) async {
     String url = 'http://api.eventful.com/json/events/search?app_key=tjDKNcBkFvMpqh3G&date=Future&sort_order=popularity&page_size=50&image_sizes=block250&location=Phoenix&keywords=';
     EventfulSearchResult result;
@@ -21,9 +24,10 @@ class EventfulClient {
   }
 
   Future<EventfulSearchResult> getEventsByCategory(category) async {
-    String url = 'http://api.eventful.com/json/events/search?app_key=tjDKNcBkFvMpqh3G&location=Phoenix&date=Future&sort_order=popularity&page_size=50&image_sizes=block250&category=';
+    String url = 'http://api.eventful.com/json/events/search?app_key=tjDKNcBkFvMpqh3G&location=Phoenix&date=Future&sort_order=popularity&page_size=25&image_sizes=block250&category=';
     EventfulSearchResult result;
     try {
+      print(Uri.encodeFull(url + category.toString()));
       final response = await http.get(Uri.encodeFull(url + category.toString()));
       final responseData = json.decode(response.body);
       result = _mapResult(responseData);

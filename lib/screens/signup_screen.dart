@@ -35,7 +35,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             width: 350,
             child: Card(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(22.0),
+                borderRadius: BorderRadius.circular(5.0),
               ),
               elevation: 20,
               child: Padding(
@@ -62,7 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             prefixIcon: Icon(Icons.email),
                             border: OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(22.0)))),
+                                    BorderRadius.all(Radius.circular(5.0)))),
                       ),
                     ),
                     Padding(
@@ -84,7 +84,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             prefixIcon: Icon(Icons.lock),
                             border: OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(22.0)))),
+                                    BorderRadius.all(Radius.circular(5.0)))),
                       ),
                     ),
                     Padding(
@@ -104,7 +104,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             prefixIcon: Icon(Icons.person),
                             border: OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(22.0)))),
+                                    BorderRadius.all(Radius.circular(5.0)))),
                       ),
                     ),
                     Padding(
@@ -124,7 +124,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             prefixIcon: Icon(Icons.person),
                             border: OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(22.0)))),
+                                    BorderRadius.all(Radius.circular(5.0)))),
                       ),
                     ),
                     Container(
@@ -144,8 +144,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             signup().then((success) {
                               print(success);
                               if (success) {
-                                Navigator.pushNamedAndRemoveUntil(context,
-                                    TabsScreen.routeName, (r) => false);
+                                Navigator.pushReplacementNamed(context,
+                                    TabsScreen.routeName);
                               }
                             });
                           } catch (error) {
@@ -153,7 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           }
                         },
                         shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(22.0)),
+                            borderRadius: new BorderRadius.circular(5.0)),
                       ),
                     )
                   ],

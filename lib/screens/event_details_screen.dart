@@ -58,8 +58,8 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                           child: ClipRRect(
                             child: Image.network(eventDetails.imageUrl),
                             borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(25),
-                                bottomRight: Radius.circular(25)),
+                                bottomLeft: Radius.circular(5),
+                                bottomRight: Radius.circular(5)),
                           ),
                         ),
                       ],
@@ -123,22 +123,6 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                               SizedBox(
                                 height: 20,
                               ),
-                              Container(
-                                child: new RaisedButton(
-                                  color: Colors.black26,
-                                  onPressed: () =>
-                                      _launchURL(eventDetails.venueUrl),
-                                  child: new Text(
-                                    'Visit Venue',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'Montserrat'),
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(22.0)),
-                                ),
-                              ),
                             ],
                           )
                         : SizedBox(),
@@ -152,39 +136,6 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                     SizedBox(
                       height: 30,
                     ),
-
-                    // if description is present, show it
-                    Column(
-                      children: <Widget>[
-                        Text(
-                          'Event Description',
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontFamily: 'Montserrat',
-                              color: Colors.black38),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          eventDetails.description,
-                          style:
-                              TextStyle(fontSize: 16, fontFamily: 'Montserrat'),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                      ],
-                    ),
-                    Divider(
-                      thickness: 10,
-                      height: 10,
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-
                     Container(
                       child: new RaisedButton(
                         color: Colors.red,
@@ -195,7 +146,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                               color: Colors.white, fontFamily: 'Montserrat'),
                         ),
                         shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(22.0)),
+                            borderRadius: new BorderRadius.circular(5.0)),
                       ),
                     ),
                     SizedBox(

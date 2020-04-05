@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
   final String title;
@@ -12,9 +13,10 @@ class Header extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          fontSize: 20,
+          fontSize: 24,
           fontWeight: FontWeight.bold,
           fontFamily: 'Montserrat',
+          color: Theme.of(context).primaryColor,
         ),
       ),
     );

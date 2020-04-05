@@ -82,7 +82,7 @@ class _FindEventScreenState extends State<FindEventScreen> {
                   child: Material(
                     elevation: 5.0,
                     borderRadius: BorderRadius.all(
-                      Radius.circular(30.0),
+                      Radius.circular(5.0),
                     ),
                     child: TextField(
                       onChanged: (text) {
@@ -103,7 +103,7 @@ class _FindEventScreenState extends State<FindEventScreen> {
                         suffixIcon: Material(
                           elevation: 2.0,
                           borderRadius: BorderRadius.all(
-                            Radius.circular(30.0),
+                            Radius.circular(5.0),
                           ),
                           child: InkWell(
                             onTap: () {

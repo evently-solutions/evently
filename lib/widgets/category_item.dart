@@ -22,18 +22,18 @@ class CategoryItem extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: BorderRadius.all(Radius.circular(5)),
               child: Container(
                 child: Image.asset(
                   imagePath,
-                  height: 250,
+                  height: MediaQuery.of(context).size.height / 5,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
               ),
             ),
             Positioned(
-              bottom: 10,
+              bottom: 50,
               right: 10,
               child: Container(
                 color: Colors.black38,

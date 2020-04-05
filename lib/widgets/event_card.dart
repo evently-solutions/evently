@@ -10,7 +10,7 @@ class EventCard extends StatelessWidget {
   final String date;
   final String venueName;
 
-  DateFormatter dateFormatter = new DateFormatter();
+  final DateFormatter dateFormatter = new DateFormatter();
 
   EventCard({this.id, this.imageUrl, this.title, this.date, this.venueName});
 
@@ -32,7 +32,7 @@ class EventCard extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 padding: EdgeInsets.all(10),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(5),
                   child: imageUrl != 'none' && imageUrl.contains('http') ? Image.network(imageUrl, width: 110,) : Image.asset('assets/images/other/image-not-found.png', width: 110,),
                 ),
               ),
@@ -54,7 +54,7 @@ class EventCard extends StatelessWidget {
                         maxLines: 2,
                       ),
                       Text(
-                        date,
+                        dateFormatter.formatDate(date),
                         style: TextStyle(
                           fontSize: 14,
                           fontFamily: 'Montserrat',

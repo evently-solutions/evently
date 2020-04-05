@@ -5,10 +5,12 @@ import 'package:evently/screens/find_event_screen.dart';
 import 'package:evently/screens/home_screen.dart';
 import 'package:evently/screens/login_screen.dart';
 import 'package:evently/screens/onboarding_screen.dart';
+import 'package:evently/screens/other_profile_screen.dart';
 import 'package:evently/screens/profile_screen.dart';
 import 'package:evently/screens/search_results_screen.dart';
 import 'package:evently/screens/signup_screen.dart';
 import 'package:evently/screens/tabs_screen.dart';
+import 'package:evently/screens/user_settings_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(Main());
@@ -63,6 +65,8 @@ class Main extends StatelessWidget {
         ConnectionsScreen.routeName: (ctx) => ConnectionsScreen(),
         AddEventScreen.routeName: (ctx) => AddEventScreen(),
         ProfileScreen.routeName: (ctx) => ProfileScreen(),
+        OtherProfileScreen.routeName: (ctx) => OtherProfileScreen(),
+        UserSettingsScreen.routeName: (ctx) => UserSettingsScreen()
       },
     );
   }

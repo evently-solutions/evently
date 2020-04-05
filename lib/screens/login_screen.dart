@@ -17,10 +17,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final auth = {
-    'email': '',
-    'password': ''
-  };
+  final auth = {'email': '', 'password': ''};
 
   String _token;
   DateTime _expiryDate;
@@ -56,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
             width: 350,
             child: Card(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
+                borderRadius: BorderRadius.circular(5.0),
               ),
               elevation: 20,
               child: Padding(
@@ -72,10 +69,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: InputDecoration(
                             labelText: "Email",
                             hintText: "Email",
-                            labelStyle: TextStyle(fontFamily: 'Montserrat',),
+                            labelStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                            ),
                             prefixIcon: Icon(Icons.email),
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(22.0)))),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5.0)))),
                         onChanged: (value) {
                           setState(() {
                             auth['email'] = value;
@@ -89,12 +89,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         obscureText: true,
                         textCapitalization: TextCapitalization.none,
                         decoration: InputDecoration(
-                            labelText: "Password",
-                            hintText: "Password",
-                            labelStyle: TextStyle(fontFamily: 'Montserrat',),
-                            prefixIcon: Icon(Icons.lock),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(22.0)))),
+                          labelText: "Password",
+                          hintText: "Password",
+                          labelStyle: TextStyle(
+                            fontFamily: 'Montserrat',
+                          ),
+                          prefixIcon: Icon(Icons.lock),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5.0),
+                            ),
+                          ),
+                        ),
                         onChanged: (value) {
                           setState(() {
                             auth['password'] = value;
@@ -111,17 +117,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           'Login',
                           style: TextStyle(
                             fontSize: 16,
-                              color: Theme.of(context).textTheme.button.color,
-                              fontFamily: 'Montserrat',),
+                            color: Theme.of(context).textTheme.button.color,
+                            fontFamily: 'Montserrat',
+                          ),
                         ),
                         onPressed: () async {
                           bool authenticated = await login();
-                          if(authenticated) {
-                            Navigator.pushNamedAndRemoveUntil(context, TabsScreen.routeName, (r) => false);
+                          if (authenticated) {
+                            Navigator.pushReplacementNamed(
+                                context, TabsScreen.routeName, arguments: {'reloadResults': 'true'});
                           }
                         },
                         shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(22.0)
+                            borderRadius: new BorderRadius.circular(5.0)
                         ),
                       ),
                     )
@@ -199,11 +207,21 @@ class _LoginScreenState extends State<LoginScreen> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text('An Error Occurred!', style: TextStyle(fontFamily: 'Montserrat',),),
+        title: Text(
+          'An Error Occurred!',
+          style: TextStyle(
+            fontFamily: 'Montserrat',
+          ),
+        ),
         content: Text(message),
         actions: <Widget>[
           FlatButton(
-            child: Text('Okay', style: TextStyle(fontFamily: 'Montserrat',),),
+            child: Text(
+              'Okay',
+              style: TextStyle(
+                fontFamily: 'Montserrat',
+              ),
+            ),
             onPressed: () {
               Navigator.of(ctx).pop();
             },

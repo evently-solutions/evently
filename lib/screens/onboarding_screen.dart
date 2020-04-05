@@ -18,12 +18,10 @@ class OnboardingScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: Image.asset(
-                  'assets/logos/evently-e.png',
-                  height: MediaQuery.of(context).size.height / 3,
-                ),
+              Image.asset(
+                'assets/logos/evently-icon.png',
+//                height: MediaQuery.of(context).size.height / 3.5,
+                width: MediaQuery.of(context).size.width,
               ),
               Text(
                 'Find your next event.',
@@ -50,10 +48,11 @@ class OnboardingScreen extends StatelessWidget {
                               color: Theme.of(context).textTheme.button.color),
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, LoginScreen.routeName);
+                          Navigator.pushReplacementNamed(context, LoginScreen.routeName);
                         },
                         shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(22.0)),
+                            borderRadius: new BorderRadius.circular(5.0),
+                        ),
                       ),
                     ),
                     Container(
@@ -68,7 +67,7 @@ class OnboardingScreen extends StatelessWidget {
                               fontFamily: 'Montserrat'),
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, SignUpScreen.routeName);
+                          Navigator.pushReplacementNamed(context, SignUpScreen.routeName);
                         },
                       ),
                     ),

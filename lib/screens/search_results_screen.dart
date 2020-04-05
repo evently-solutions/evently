@@ -1,4 +1,4 @@
-import 'package:evently/models/eventful_event_detail_result.dart';
+import 'package:evently/dao/firebase/firebase_dao.dart';
 import 'package:evently/models/eventful_search_result.dart';
 import 'package:evently/services/eventful/eventful_client.dart';
 import 'package:evently/widgets/event_card.dart';
@@ -15,6 +15,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
   var _initialized = false;
   EventfulClient eventfulClient = EventfulClient();
   EventfulSearchResult eventfulSearchResult;
+  FirebaseDAO dao = FirebaseDAO();
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
       if (parameters['searchType'] == 'keyword') {
         getEventsByKeywords(parameters['keywords']);
       } else if (parameters['searchType'] == 'category') {
+        dao.persistCategorySearch(parameters['id']);
         getEventsByCategory(parameters['id']);
       }
       setState(() {
@@ -67,8 +69,9 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                           padding: const EdgeInsets.only(top: 10, bottom: 10),
                           child: Center(
                             child: Text(
-                              eventfulSearchResult.totalItems.toString() +
-                                  ' events found',
+//                              eventfulSearchResult.totalItems.toString() +
+//                                  ' events found',
+                            'Showing first 30 results',
                               style: TextStyle(
                                   fontFamily: 'Montserrat', fontSize: 16),
                             ),
